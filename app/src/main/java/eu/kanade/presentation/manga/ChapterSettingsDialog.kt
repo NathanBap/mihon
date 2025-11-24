@@ -35,7 +35,7 @@ import kotlinx.collections.immutable.persistentListOf
 import tachiyomi.core.common.preference.TriState
 import tachiyomi.domain.manga.model.Manga
 import tachiyomi.i18n.MR
-import tachiyomi.presentation.core.components.LabeledCheckbox
+import tachiyomi.presentation.core.components.CheckboxItem
 import tachiyomi.presentation.core.components.RadioItem
 import tachiyomi.presentation.core.components.SortItem
 import tachiyomi.presentation.core.components.TriStateItem
@@ -232,11 +232,10 @@ private fun ColumnScope.DisplayPage(
         )
     }
     
-    LabeledCheckbox(
+    CheckboxItem(
         label = stringResource(MR.strings.expand_chapter_titles),
         checked = expandChapterTitles,
-        onCheckedChange = onExpandChapterTitlesChanged,
-        modifier = Modifier.padding(horizontal = TabbedDialogPaddings.Horizontal),
+        onClick = { onExpandChapterTitlesChanged(!expandChapterTitles) },
     )
 }
 
