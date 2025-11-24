@@ -55,6 +55,8 @@ fun ChapterSettingsDialog(
     onScanlatorFilterClicked: (() -> Unit),
     onSortModeChanged: (Long) -> Unit,
     onDisplayModeChanged: (Long) -> Unit,
+    expandChapterTitles: Boolean,
+    onExpandChapterTitlesChanged: (Boolean) -> Unit,
     onSetAsDefault: (applyToExistingManga: Boolean) -> Unit,
     onResetToDefault: () -> Unit,
 ) {
@@ -122,6 +124,8 @@ fun ChapterSettingsDialog(
                     DisplayPage(
                         displayMode = manga?.displayMode ?: 0,
                         onItemSelected = onDisplayModeChanged,
+                        expandChapterTitles = expandChapterTitles,
+                        onExpandChapterTitlesChanged = onExpandChapterTitlesChanged,
                     )
                 }
             }
@@ -214,6 +218,8 @@ private fun ColumnScope.SortPage(
 private fun ColumnScope.DisplayPage(
     displayMode: Long,
     onItemSelected: (Long) -> Unit,
+    expandChapterTitles: Boolean,
+    onExpandChapterTitlesChanged: (Boolean) -> Unit,
 ) {
     listOf(
         MR.strings.show_title to Manga.CHAPTER_DISPLAY_NAME,
@@ -225,6 +231,12 @@ private fun ColumnScope.DisplayPage(
             onClick = { onItemSelected(mode) },
         )
     }
+    
+    LabeledCheckbox(
+        label = stringResource(MR.strings.expand_chapter_titles),
+        checked = expandChapterTitles,
+        onCheckedChange = onExpandChapterTitlesChanged,
+    )
 }
 
 @Composable
