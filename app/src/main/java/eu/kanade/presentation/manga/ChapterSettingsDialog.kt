@@ -236,6 +236,7 @@ private fun ColumnScope.DisplayPage(
         label = stringResource(MR.strings.expand_chapter_titles),
         checked = expandChapterTitles,
         onCheckedChange = onExpandChapterTitlesChanged,
+        modifier = Modifier.padding(horizontal = TabbedDialogPaddings.Horizontal),
     )
 }
 

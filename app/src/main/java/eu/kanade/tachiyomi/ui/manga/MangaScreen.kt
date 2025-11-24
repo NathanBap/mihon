@@ -93,6 +93,7 @@ class MangaScreen(
         }
 
         val state by screenModel.state.collectAsStateWithLifecycle()
+        val expandChapterTitles by screenModel.expandChapterTitles.collectAsState()
 
         if (state is MangaScreenModel.State.Loading) {
             LoadingScreen()
@@ -121,7 +122,7 @@ class MangaScreen(
             isTabletUi = isTabletUi(),
             chapterSwipeStartAction = screenModel.chapterSwipeStartAction,
             chapterSwipeEndAction = screenModel.chapterSwipeEndAction,
-            expandChapterTitles = screenModel.expandChapterTitles.get(),
+            expandChapterTitles = expandChapterTitles,
             navigateUp = navigator::pop,
             onChapterClicked = { openChapter(context, it) },
             onDownloadChapter = screenModel::runChapterDownloadActions.takeIf { !successState.source.isLocalOrStub() },
@@ -228,7 +229,7 @@ class MangaScreen(
                 onBookmarkedFilterChanged = screenModel::setBookmarkedFilter,
                 onSortModeChanged = screenModel::setSorting,
                 onDisplayModeChanged = screenModel::setDisplayMode,
-                expandChapterTitles = screenModel.expandChapterTitles.get(),
+                expandChapterTitles = expandChapterTitles,
                 onExpandChapterTitlesChanged = { screenModel.expandChapterTitles.set(it) },
                 onSetAsDefault = screenModel::setCurrentSettingsAsDefault,
                 onResetToDefault = screenModel::resetToDefaultSettings,
