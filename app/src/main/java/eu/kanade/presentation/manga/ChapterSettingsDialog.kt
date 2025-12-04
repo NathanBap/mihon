@@ -35,11 +35,11 @@ import kotlinx.collections.immutable.persistentListOf
 import tachiyomi.core.common.preference.TriState
 import tachiyomi.domain.manga.model.Manga
 import tachiyomi.i18n.MR
+import tachiyomi.presentation.core.components.CheckboxItem
 import tachiyomi.presentation.core.components.HeadingItem
 import tachiyomi.presentation.core.components.LabeledCheckbox
 import tachiyomi.presentation.core.components.RadioItem
 import tachiyomi.presentation.core.components.SortItem
-import tachiyomi.presentation.core.components.SwitchItem
 import tachiyomi.presentation.core.components.TriStateItem
 import tachiyomi.presentation.core.i18n.stringResource
 import tachiyomi.presentation.core.theme.active
@@ -235,7 +235,7 @@ private fun ColumnScope.DisplayPage(
         )
     }
 
-    SwitchItem(
+    CheckboxItem(
         label = stringResource(MR.strings.expand_chapter_titles),
         checked = expandChapterTitles,
         onClick = { onExpandChapterTitlesChanged(!expandChapterTitles) },
