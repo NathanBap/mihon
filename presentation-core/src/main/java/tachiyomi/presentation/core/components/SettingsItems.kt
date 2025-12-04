@@ -31,6 +31,7 @@ import androidx.compose.material3.MenuAnchorType
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
@@ -42,6 +43,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
@@ -156,6 +158,37 @@ fun CheckboxItem(label: String, checked: Boolean, onClick: () -> Unit) {
         },
         onClick = onClick,
     )
+}
+
+@Composable
+fun SwitchItem(
+    label: String,
+    checked: Boolean,
+    onClick: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .clickable(onClick = onClick)
+            .fillMaxWidth()
+            .padding(
+                start = SettingsItemsPaddings.Horizontal,
+                end = SettingsItemsPaddings.Horizontal,
+                top = SettingsItemsPaddings.Vertical * 2,
+                bottom = SettingsItemsPaddings.Vertical,
+            ),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(24.dp),
+    ) {
+        Switch(
+            checked = checked,
+            onCheckedChange = null,
+            modifier = Modifier.scale(0.9f),
+        )
+        Text(
+            text = label,
+            style = MaterialTheme.typography.bodyMedium,
+        )
+    }
 }
 
 @Composable
