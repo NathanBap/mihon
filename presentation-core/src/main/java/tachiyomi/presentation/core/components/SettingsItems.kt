@@ -31,6 +31,7 @@ import androidx.compose.material3.MenuAnchorType
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
@@ -150,6 +151,20 @@ fun CheckboxItem(label: String, checked: Boolean, onClick: () -> Unit) {
         label = label,
         widget = {
             Checkbox(
+                checked = checked,
+                onCheckedChange = null,
+            )
+        },
+        onClick = onClick,
+    )
+}
+
+@Composable
+fun SwitchItem(label: String, checked: Boolean, onClick: () -> Unit) {
+    BaseSettingsItem(
+        label = label,
+        widget = {
+            Switch(
                 checked = checked,
                 onCheckedChange = null,
             )
